@@ -153,7 +153,6 @@ header a{
 .carousel .list .item:nth-child(1){
     z-index: 1;
 }
-/* Add to style.css */
 .popup {
     display: none;
     position: fixed;
@@ -161,7 +160,7 @@ header a{
     left: 0;
     width: 100%;
     height: 100%;
-    background: rgba(0, 0, 0, 0.5);
+    background: rgba(0, 0, 0, 0.7);
     backdrop-filter: blur(5px);
     z-index: 1000;
     justify-content: center;
@@ -169,30 +168,60 @@ header a{
 }
 
 .popup-content {
-    background: transparent;
+    background: #ffffffce;
     width: 80%;
-    height: 80%;
-    max-width: 1000px;
+    max-width: 600px;
+    max-height: 80%;
     position: relative;
     border-radius: 10px;
-    overflow: hidden;
+    padding: 20px;
+    overflow-y: auto;
+    color: #000;
 }
 
-.popup-content iframe {
-    width: 100%;
-    height: 100%;
+.reviews-text {
+    font-size: 14px;
+    line-height: 1.5;
+}
+
+.reviews-text h3 {
+    margin-top: 0;
+    font-size: 20px;
+    color: #f1683a;
+}
+
+.reviews-text p {
+    margin: 10px 0;
+    border-bottom: 1px solid #eee;
+    padding-bottom: 10px;
+}
+.reviews-text .original-content-btn {
+    display: block;
+    margin: 10px 0 20px;
+    padding: 8px 12px;
+    background-color: #f1683a;
+    color: #fff;
     border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 12px;
+    font-family: Poppins;
+    text-align: center;
+    width: 150px;
 }
 
+.reviews-text .original-content-btn:hover {
+    background-color: #d95a2e;
+}
 .close {
     position: absolute;
     top: 10px;
-    right: 20px;
-    font-size: 16px;
-    color: white;
+    right: 10px;
+    font-size: 14px;
+    color: #fff;
     background: #333;
     border: none;
-    padding: 8px 16px;
+    padding: 8px 12px;
     border-radius: 5px;
     cursor: pointer;
     z-index: 1001;
