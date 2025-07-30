@@ -1,4 +1,4 @@
-//step 1: get DOM
+// Step 1: Get DOM
 let nextDom = document.getElementById('next');
 let prevDom = document.getElementById('prev');
 
@@ -12,6 +12,32 @@ thumbnailBorderDom.appendChild(thumbnailItemsDom[0]);
 let timeRunning = 3000;
 let timeAutoNext = 7000;
 
+// Initialize WhatsApp button click counter from localStorage
+let whatsappClickCount = parseInt(localStorage.getItem('whatsappClickCount')) || 0;
+console.log(`Initial WhatsApp click count: ${whatsappClickCount}`);
+
+// Function to attach event listeners to WhatsApp buttons
+function attachWhatsAppListeners() {
+    const whatsappButtons = document.querySelectorAll('.carousel .list .item .buttons button:first-child');
+    whatsappButtons.forEach(button => {
+        // Remove existing listeners to prevent duplicates
+        button.removeEventListener('click', handleWhatsAppClick);
+        button.addEventListener('click', handleWhatsAppClick);
+    });
+}
+
+// Handler for WhatsApp button clicks
+function handleWhatsAppClick() {
+    whatsappClickCount++;
+    localStorage.setItem('whatsappClickCount', whatsappClickCount);
+    console.log(`WhatsApp button clicked! Total clicks: ${whatsappClickCount}`);
+    // Optionally, update the UI to display the count
+    // Example: document.getElementById('whatsappCount').innerText = `WhatsApp Clicks: ${whatsappClickCount}`;
+}
+
+// Attach WhatsApp listeners on page load
+attachWhatsAppListeners();
+
 nextDom.onclick = function(){
     showSlider('next');    
 }
@@ -19,19 +45,21 @@ nextDom.onclick = function(){
 prevDom.onclick = function(){
     showSlider('prev');    
 }
+
 let runTimeOut;
 let runNextAuto = setTimeout(() => {
-    next.click();
-}, timeAutoNext)
+    nextDom.click();
+}, timeAutoNext);
+
 function showSlider(type){
-    let  SliderItemsDom = SliderDom.querySelectorAll('.carousel .list .item');
+    let SliderItemsDom = SliderDom.querySelectorAll('.carousel .list .item');
     let thumbnailItemsDom = document.querySelectorAll('.carousel .thumbnail .item');
     
     if(type === 'next'){
         SliderDom.appendChild(SliderItemsDom[0]);
         thumbnailBorderDom.appendChild(thumbnailItemsDom[0]);
         carouselDom.classList.add('next');
-    }else{
+    } else {
         SliderDom.prepend(SliderItemsDom[SliderItemsDom.length - 1]);
         thumbnailBorderDom.prepend(thumbnailItemsDom[thumbnailItemsDom.length - 1]);
         carouselDom.classList.add('prev');
@@ -44,10 +72,12 @@ function showSlider(type){
 
     clearTimeout(runNextAuto);
     runNextAuto = setTimeout(() => {
-        next.click();
-    }, timeAutoNext)
-}
+        nextDom.click();
+    }, timeAutoNext);
 
+    // Reattach WhatsApp button listeners after slider transition
+    attachWhatsAppListeners();
+}
 
 function openReviewsPopup(destination) {
     const popup = document.getElementById('reviewsPopup');
@@ -142,6 +172,7 @@ function openReviewsPopup(destination) {
     
     popup.style.display = 'flex';
 }
+
 function closeReviewsPopup() {
     const popup = document.getElementById('reviewsPopup');
     popup.style.display = 'none';
