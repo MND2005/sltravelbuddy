@@ -6,6 +6,59 @@
     <link rel="icon" type="image/png" href="/image/1.jpg">
     <title>Travel Buddy</title>
     <link rel="stylesheet" href="style.css">
+    <style>
+        /* Styles for WhatsApp popup */
+        .whatsapp-popup {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.7);
+            backdrop-filter: blur(5px);
+            z-index: 1000;
+            justify-content: center;
+            align-items: center;
+        }
+        .whatsapp-popup-content {
+            background: #0000004d;
+            width: 80%;
+            max-width: 400px;
+            padding: 20px;
+            border-radius: 10px;
+            text-align: center;
+            position: relative;
+            color: #ffffff;
+        }
+        .whatsapp-popup-content button {
+            background-color: #2bff00;
+            border: none;
+            padding: 10px 20px;
+            margin: 10px;
+            border-radius: 5px;
+            font-family: Poppins;
+            font-weight: 500;
+            color: #fff;
+            cursor: pointer;
+        }
+        .whatsapp-popup-content button:hover {
+            background-color: #d95a2e;
+        }
+        .whatsapp-popup-content .close {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            font-size: 14px;
+            color: #fff;
+            background: #333;
+            padding: 8px 12px;
+            border-radius: 5px;
+        }
+        .whatsapp-popup-content .close:hover {
+            background: #555;
+        }
+    </style>
 </head>
 <!-- Google tag (gtag.js) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=AW-17378733223"></script>
@@ -13,20 +66,19 @@
   window.dataLayer = window.dataLayer || [];
   function gtag(){dataLayer.push(arguments);}
   gtag('js', new Date());
-
   gtag('config', 'AW-17378733223');
 </script>
 <body>
     <header>
         <nav>
             <a href="#home">Home</a>
-            <a onclick="window.open('https://wa.me/94754644067?text=Hi%2C%20I%20Found%20You%20From%20Google%20Ads.%20Can%20I%20Get%20More%20Info?', '_blank')">Contacts</a>
+            <a href="#" onclick="openWhatsAppPopup()">Contacts</a>
             <a href="https://www.tripadvisor.com/Attraction_Review-g1507159-d26857913-Reviews-Travel_Buddy-Kirindiwela_Western_Province.html">Info</a>
         </nav>
     </header>
 
     <!-- carousel -->
-     <section id="home">
+    <section id="home">
     <div class="carousel">
         <!-- list item -->
         <div class="list">
@@ -37,15 +89,10 @@
                     <div class="title">Taxi/Shared Taxi</div>
                     <div class="topic">Colombo Airport</div>
                     <div class="des">
-                        <!-- lorem 50 -->
                         Colombo Airport Pick-Up Service provides safe, reliable, and comfortable rides to any destination in Sri Lanka. Enjoy a smooth, hassle-free start with our friendly, professional drivers.
- 
-
                     </div>
-                    <!-- Add this inside the carousel .item div, replacing the existing buttons div -->
-                    <!-- Add this inside the carousel .item div, replacing the existing buttons div -->
                     <div class="buttons">
-                        <button onclick="window.open('https://wa.me/94754644067', '_blank')">WhatsApp</button>
+                        <button onclick="openWhatsAppPopup()">WhatsApp</button>
                         <button onclick="openReviewsPopup('Airport')">View Reviews</button>
                     </div>
                 </div>
@@ -57,13 +104,10 @@
                     <div class="title">Taxi/Shared Taxi</div>
                     <div class="topic">Ella</div>
                     <div class="des">
-                        <!-- lorem 50 -->
                         Ella is a small town nestled in Sri Lanka’s central highlands, famous for its breathtaking views, lush greenery, and cool climate. It’s a popular destination for hiking, with highlights like Ella Rock, Little Adam’s Peak, and the iconic Nine Arches Bridge.
                     </div>
-                    <!-- Add this inside the carousel .item div, replacing the existing buttons div -->
-                    <!-- Add this inside the carousel .item div, replacing the existing buttons div -->
                     <div class="buttons">
-                        <button onclick="window.open('https://wa.me/94754644067', '_blank')">WhatsApp</button>
+                        <button onclick="openWhatsAppPopup()">WhatsApp</button>
                         <button onclick="openReviewsPopup('Ella')">View Reviews</button>
                     </div>
                 </div>
@@ -77,10 +121,8 @@
                     <div class="des">
                         Sigiriya, also known as the Lion Rock, is an ancient rock fortress in central Sri Lanka. Rising 200 meters above the jungle, it features stunning frescoes, landscaped gardens, and a royal palace built by King Kashyapa in the 5th century. A UNESCO World Heritage Site.
                     </div>
-                    <!-- Add this inside the carousel .item div, replacing the existing buttons div -->
-                    <!-- Add this inside the carousel .item div, replacing the existing buttons div -->
                     <div class="buttons">
-                        <button onclick="window.open('https://wa.me/94754644067', '_blank')">WhatsApp</button>
+                        <button onclick="openWhatsAppPopup()">WhatsApp</button>
                         <button onclick="openReviewsPopup('Sigiriya')">View Reviews</button>
                     </div>
                 </div>
@@ -93,12 +135,9 @@
                     <div class="topic">Yala</div>
                     <div class="des">
                         Yala is Sri Lanka’s most famous national park, known for its rich wildlife and beautiful landscapes. Home to elephants, leopards, sloth bears, and hundreds of bird species, Yala offers thrilling safari experiences.
-
                     </div>
-                    <!-- Add this inside the carousel .item div, replacing the existing buttons div -->
-                    <!-- Add this inside the carousel .item div, replacing the existing buttons div -->
                     <div class="buttons">
-                        <button onclick="window.open('https://wa.me/94754644067', '_blank')">WhatsApp</button>
+                        <button onclick="openWhatsAppPopup()">WhatsApp</button>
                         <button onclick="openReviewsPopup('Yala')">View Reviews</button>
                     </div>
                 </div>
@@ -111,12 +150,9 @@
                     <div class="topic">Arugambay</div>
                     <div class="des">
                         Arugam Bay is a laid-back beach town on Sri Lanka’s east coast, famous for its world-class surfing waves and relaxed vibe. Surrounded by palm-fringed beaches and scenic lagoons, it’s a hotspot for surfers, backpackers, and nature lovers. Beyond the waves, Arugam Bay offers stunning sunrises, and vibrant local culture.
-
                     </div>
-                    <!-- Add this inside the carousel .item div, replacing the existing buttons div -->
-                    <!-- Add this inside the carousel .item div, replacing the existing buttons div -->
                     <div class="buttons">
-                        <button onclick="window.open('https://wa.me/94754644067', '_blank')">WhatsApp</button>
+                        <button onclick="openWhatsAppPopup()">WhatsApp</button>
                         <button onclick="openReviewsPopup('Arugambay')">View Reviews</button>
                     </div>
                 </div>
@@ -129,13 +165,9 @@
                     <div class="topic">Galle</div>
                     <div class="des">
                         Galle is a historic coastal city in southern Sri Lanka, best known for the Galle Fort, a UNESCO World Heritage Site built by the Portuguese and fortified by the Dutch. With its cobbled streets, colonial architecture, boutique shops, and ocean views, Galle offers a charming blend of history, culture, and seaside beauty.
-
-
                     </div>
-                    <!-- Add this inside the carousel .item div, replacing the existing buttons div -->
-                    <!-- Add this inside the carousel .item div, replacing the existing buttons div -->
                     <div class="buttons">
-                        <button onclick="window.open('https://wa.me/94754644067', '_blank')">WhatsApp</button>
+                        <button onclick="openWhatsAppPopup()">WhatsApp</button>
                         <button onclick="openReviewsPopup('Galle')">View Reviews</button>
                     </div>
                 </div>
@@ -145,123 +177,103 @@
                 <div class="content">
                     <div class="author">Sri Lanka</div>
                     <div class="title">Taxi/Shared Taxi/Safari</div>
-                    <div class="topic">Wilpattuwa</div>
+                    <div class="topic">Wilpattu</div>
                     <div class="des">
                         Wilpattu is Sri Lanka’s largest national park, famous for its natural lakes called "willus." It's a peaceful wildlife haven, home to leopards, elephants, sloth bears, and many bird species.
- 
-
-
                     </div>
-                    <!-- Add this inside the carousel .item div, replacing the existing buttons div -->
-                    <!-- Add this inside the carousel .item div, replacing the existing buttons div -->
                     <div class="buttons">
-                        <button onclick="window.open('https://wa.me/94754644067', '_blank')">WhatsApp</button>
-                        <button onclick="openReviewsPopup('Wilpaththuwa')">View Reviews</button>
+                        <button onclick="openWhatsAppPopup()">WhatsApp</button>
+                        <button onclick="openReviewsPopup('Wilpattu')">View Reviews</button>
                     </div>
                 </div>
             </div>
-            
-            
         </div>
-        <!-- list thumnail -->
+        <!-- list thumbnail -->
         <div class="thumbnail">
             <div class="item">
                 <img src="https://images.squarespace-cdn.com/content/v1/55697ab8e4b084f6ac0581ef/1548665999203-ZY50XZXNVFYF9SM8YE2W/1200px-266ao_-_SriLankan_Airlines_Airbus_A330-243%3B_4R-ALB%40ZRH%3B07.11.2003_%285398191044%29.jpg?format=1500w">
                 <div class="content">
-                    <div class="title">
-                        Colombo Airport
-                    </div>
-                    <div class="description">
-                        Taxi/Shared Taxi
-                    </div>
+                    <div class="title">Colombo Airport</div>
+                    <div class="description">Taxi/Shared Taxi</div>
                 </div>
             </div>
             <div class="item">
                 <img src="https://us.lakpura.com/cdn/shop/files/demodara-nine-arch-bridge-ella-sri-lanka-scaled-1_77c0b1eb-4170-472a-b6df-950903726734.jpg?v=1654085052&width=3840">
                 <div class="content">
-                    <div class="title">
-                        Ella
-                    </div>
-                    <div class="description">
-                        Taxi/Shared Taxi
-                    </div>
+                    <div class="title">Ella</div>
+                    <div class="description">Taxi/Shared Taxi</div>
                 </div>
             </div>
             <div class="item">
                 <img src="https://windows10spotlight.com/wp-content/uploads/2021/02/b00de5595f4f67e9d595d96aebd5429d.jpg">
                 <div class="content">
-                    <div class="title">
-                        Sigiriya
-                    </div>
-                    <div class="description">
-                        Taxi/Shared Taxi
-                    </div>
+                    <div class="title">Sigiriya</div>
+                    <div class="description">Taxi/Shared Taxi</div>
                 </div>
             </div>
             <div class="item">
                 <img src="https://images.unsplash.com/photo-1627401099591-4772d63b86a4?fm=jpg&q=60&w=3000&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTh8fHlhbGF8ZW58MHx8MHx8fDA%3D">
                 <div class="content">
-                    <div class="title">
-                        Yala
-                    </div>
-                    <div class="description">
-                        Taxi/Shared Taxi/Safari
-                    </div>
+                    <div class="title">Yala</div>
+                    <div class="description">Taxi/Shared Taxi/Safari</div>
                 </div>
             </div>
             <div class="item">
                 <img src="https://wallup.net/wp-content/uploads/2016/03/10/314363-Sri_Lanka-nature-beach-waves-sea-rock-sunrise-photography-Arugambay.jpg">
                 <div class="content">
-                    <div class="title">
-                        Arugambay
-                    </div>
-                    <div class="description">
-                        Taxi/Shared Taxi
-                    </div>
+                    <div class="title">Arugambay</div>
+                    <div class="description">Taxi/Shared Taxi</div>
                 </div>
             </div>
             <div class="item">
                 <img src="https://e1.pxfuel.com/desktop-wallpaper/337/902/desktop-wallpaper-unawatuna-sri-lanka-13-sri-lanka.jpg">
                 <div class="content">
-                    <div class="title">
-                        Galle
-                    </div>
-                    <div class="description">
-                        Taxi/Shared Taxi
-                    </div>
+                    <div class="title">Galle</div>
+                    <div class="description">Taxi/Shared Taxi</div>
                 </div>
             </div>
             <div class="item">
                 <img src="https://www.rivieratravel.co.uk/sites/default/files/assetbank/Sri_Lanka_SL_Day_7_Elephant_GettyImages-534789901.jpg">
                 <div class="content">
-                    <div class="title">
-                        Wipaththuwa
-                    </div>
-                    <div class="description">
-                        Taxi/Shared Taxi/Safari
-                    </div>
+                    <div class="title">Wilpattu</div>
+                    <div class="description">Taxi/Shared Taxi/Safari</div>
                 </div>
             </div>
         </div>
-        </section>
-        <!-- next prev -->
-        <!-- Add this at the bottom of the body, before the script tag -->
-<!-- Add this at the bottom of the body, before the script tag -->
-<div id="reviewsPopup" class="popup">
-    <div class="popup-content">
-        <button class="close" onclick="closeReviewsPopup()">Close</button>
-        <div id="reviewsContent" class="reviews-text"></div>
-    </div>
-</div>
-        <div class="arrows">
-            <button id="prev"><</button>
-            <button id="next">></button>
+    </section>
+    <!-- WhatsApp popup -->
+    <div id="whatsappPopup" class="whatsapp-popup">
+        <div class="whatsapp-popup-content">
+            <button class="close" onclick="closeWhatsAppPopup()">X</button>
+            <h3>Contact Us via WhatsApp</h3>
+            <button onclick="window.open('https://wa.me/94754644067?text=Hi%2C%20I%20Found%20You%20From%20Google%20Ads.%20Can%20I%20Get%20More%20Info?', '_blank')">WhatsApp 1</button>
+            <button onclick="window.open('https://wa.me/94774764755?text=Hi%2C%20I%20Found%20You%20From%20Google%20Ads.%20Can%20I%20Get%20More%20Info?', '_blank')">WhatsApp 2</button>
         </div>
-        <!-- time running -->
-        <div class="time"></div>
+    </div>
+    <!-- Reviews popup -->
+    <div id="reviewsPopup" class="popup">
+        <div class="popup-content">
+            <button class="close" onclick="closeReviewsPopup()">X</button>
+            <div id="reviewsContent" class="reviews-text"></div>
+        </div>
+    </div>
+    <div class="arrows">
+        <button id="prev"><</button>
+        <button id="next">></button>
+    </div>
+    <!-- time running -->
+    <div class="time"></div>
     </div>
 
+    <script>
+        // JavaScript for WhatsApp popup
+        function openWhatsAppPopup() {
+            document.getElementById('whatsappPopup').style.display = 'flex';
+        }
+        function closeWhatsAppPopup() {
+            document.getElementById('whatsappPopup').style.display = 'none';
+        }
+    </script>
     <script src="app.js"></script>
-    
 </body>
 </html>
