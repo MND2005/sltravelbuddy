@@ -54,6 +54,18 @@ function openReviewsPopup(destination) {
     const reviewsContent = document.getElementById('reviewsContent');
     
     const reviews = {
+        'Airport': [
+            { 
+                author: 'Patrick', 
+                text: 'Highly recommended ! Very reliable and straightforward! We got it on our trip through Sri Lanka on recommendation. He took a lot of time on our drive from Ella to Arugam Bay and stopped on the way to show us crocodiles and other sights. He then taught us again and again very well to get from A to B. He also organized our safari in Yala, with which we were very satisfied. Communication is great via WhatsApp and he takes a lot of time to help us in the best possible way. Can ES recommend.',
+                url: 'https://www.tripadvisor.com/Attraction_Review-g1507159-d26857913-Reviews-or10-Travel_Buddy-Kirindiwela_Western_Province.html'
+            },
+            { 
+                author: 'nhsplmp', 
+                text: 'Drivers were always on time. Not overly chatty yet ready information whenever asked. Pictures of pickup vehicle always sent ahead of time so you were not left wondering which car will arrive to pick you up.',
+                url: 'https://www.tripadvisor.com/Attraction_Review-g1507159-d26857913-Reviews-or10-Travel_Buddy-Kirindiwela_Western_Province.html'
+            }
+        ],
         'Ella': [
             { 
                 author: 'hannah h', 
